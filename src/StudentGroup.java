@@ -171,12 +171,12 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsByAge(int age) {
-Student st[] = new Student[students.length];
+/*Student st[] = new Student[students.length];
 		int count=0;
 		for(int i=0;i<students.length;i++) if(students[i].getBirthDate()getClass().getAge() == age) {
 			st[count] = students[i];
 			count++;
-		}
+		}*/
 		return null;
 	}
 
@@ -205,12 +205,12 @@ Student st[] = new Student[students.length];
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
-	/*	if (student == null) throw new IllegalArgumentException();
+		if (student == null) throw new IllegalArgumentException();
 		else
 		for(int i=0;i<students.length;i++) {
 			if(student.getId() == students[i].getId()) return students[i+1];
 		}
-    */
+
 		return null;
 	}
 }
