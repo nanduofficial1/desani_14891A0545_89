@@ -14,22 +14,6 @@ import java.util.Date;
  * DO NOT PUT any classes into packages
  *
  */
-/* class IllegalArgumentException extends Exception
- {
-  public IllegalArgumentException()
-  {
-
-  }
-
- }*/
- class IllegalArgumentException extends Exception
- {
-  public IllegalArgumentException()
-  {
-
-  }
-
- }
 public class StudentGroup implements StudentArrayOperation {
 
 	private Student[] students;
@@ -55,26 +39,20 @@ public class StudentGroup implements StudentArrayOperation {
 		if (students == null) {
 			throw new IllegalArgumentException();
 		}
-		else
-        {
-            this.students = students;
+		else this.students = students;
 	}
-	}
+
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		if(index < 0 || index >= students.length)
-            {
-                throw new IllegalArgumentException();
-        }
-		else {return students[index];
-	}
+		if(index < 0 || index >= students.length) throw new IllegalArgumentException();
+		else return students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
-		if(index < 0 || index >= students.length){ throw new IllegalArgumentException();}
+		if(index < 0 || index >= students.length) throw new IllegalArgumentException();
 		else {
 			students[index] = student;
 		}
@@ -84,7 +62,7 @@ public class StudentGroup implements StudentArrayOperation {
 	public void addFirst(Student student) {
 		// Add your implementation here
 		//Still to be Reviewed
-		if (student == null ) {throw new IllegalArgumentException();}
+		if (student == null ) throw new IllegalArgumentException();
 		else {
 			ArrayList <Student>at = new ArrayList<Student>();
 			at = (ArrayList<Student>) Arrays.asList(students);
@@ -124,7 +102,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-
+		if((student==null)||index < 0 || index >= students.length)
+            throw new IllegalArgumentException();
 
 	}
 
@@ -207,12 +186,13 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudentsByAge(int age) {
 		// Add your implementation here
-		/*Student st[] = new Student[students.length];
+		Student st[] = new Student[students.length];
 		int count=0;
-		for(int i=0;i<students.length;i++) if(students[i].getBirthDate()getClass().getAge() == age) {
+		for(int i=0;i<students.length;i++)
+            if(students[i].getBirthDate()getClass().getAge() == age) {
 			st[count] = students[i];
 			count++;
-		}*/
+		}
 		return null;
 	}
 
