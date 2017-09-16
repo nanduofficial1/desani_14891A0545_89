@@ -14,7 +14,6 @@ import java.util.Date;
  * DO NOT PUT any classes into packages
  *
  */
-
 public class StudentGroup implements StudentArrayOperation {
 
 	private Student[] students;
@@ -30,6 +29,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudents() {
 		// Add your implementation here
+		//Correct
 		return students;
 	}
 
@@ -64,24 +64,37 @@ public class StudentGroup implements StudentArrayOperation {
 		//Still to be Reviewed
 		if (student == null ) throw new IllegalArgumentException();
 		else {
-			ArrayList <Student>al = new ArrayList<Student>();
-			al = (ArrayList<Student>) Arrays.asList(students);
-			al.add(0, student);
+			ArrayList <Student>at = new ArrayList<Student>();
+			at = (ArrayList<Student>) Arrays.asList(students);
+			at.add(0, student);
 			students = null;
-			students = (Student[]) al.toArray();
+			students = (Student[]) at.toArray();
+
+			/*
+			Student []st = new Student[students.length+1];
+			st[0] = student;
+			for(int i=1;i<st.length;i++) {
+				st[i] = students[i-1];
+			}
+			students  = null;
+			Student []students = new Student[st.length];
+			for(int i=0;i<st.length;i++) {
+				students[i] = st[i];
+			}*/
 		}
 	}
 
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
+		//Still to be Reviewed
 		if (student == null ) throw new IllegalArgumentException();
 		else {
-			ArrayList <Student>al = new ArrayList<Student>();
-			al = (ArrayList<Student>) Arrays.asList(students);
-			al.add(students.length, student);
+			ArrayList <Student>at = new ArrayList<Student>();
+			at = (ArrayList<Student>) Arrays.asList(students);
+			at.add(students.length, student);
 			students = null;
-			students = (Student[]) al.toArray();
+			students = (Student[]) at.toArray();
 		}
 
 	}
@@ -89,7 +102,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-
+		if((student==null)||index < 0 || index >= students.length)
+            throw new IllegalArgumentException();
 
 	}
 
@@ -134,19 +148,19 @@ public class StudentGroup implements StudentArrayOperation {
 		// Add your implementation here
 		if (date == null) throw new IllegalArgumentException();
 		else {
-			Student []dob = new Student[students.length];
+			Student []st = new Student[students.length];
 			int count =0;
 			for(int i=0;i<students.length;i++)
 			if(students[i].getBirthDate().compareTo(date) == 0) {
-				dob[count] = students[i];
+				st[count] = students[i];
 				count++;
 			}
-			Student []st = new Student[count];
+			Student []ts = new Student[count];
 
 			for(int i=0;i<count;i++) {
-				st[i] = dob[i];
+				ts[i] = st[i];
 			}
-			return st;
+			return ts;
 		}
 
 	}
@@ -171,9 +185,11 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsByAge(int age) {
-/*Student st[] = new Student[students.length];
+		// Add your implementation here
+		/*Student st[] = new Student[students.length];
 		int count=0;
-		for(int i=0;i<students.length;i++) if(students[i].getBirthDate()getClass().getAge() == age) {
+		for(int i=0;i<students.length;i++)
+            if(students[i].getBirthDate()getClass().getAge() == age) {
 			st[count] = students[i];
 			count++;
 		}*/
@@ -190,27 +206,27 @@ public class StudentGroup implements StudentArrayOperation {
 				d = students[i].getAvgMark();
 			}
 		}
-		Student []stud = new Student[students.length];
+		Student []st = new Student[students.length];
 		int count=0;
 		for(int i=0;i<students.length;i++) {
-			if(d == students[i].getAvgMark()) {stud[count] = students[i]; count++;}
+			if(d == students[i].getAvgMark()) {st[count] = students[i]; count++;}
 		}
-		Student []st = new Student[count];
+		Student []ts = new Student[count];
 		for(int i=0;i<count;i++) {
-			st[i] = stud[i];
+			ts[i] = st[i];
 		}
-		return st;
+		return ts;
 	}
 
 	@Override
 	public Student getNextStudent(Student student) {
+		//Correct
 		// Add your implementation here
 		if (student == null) throw new IllegalArgumentException();
 		else
 		for(int i=0;i<students.length;i++) {
 			if(student.getId() == students[i].getId()) return students[i+1];
 		}
-
 		return null;
 	}
 }
