@@ -9,15 +9,31 @@ import java.util.Date;
  * after the element was removed the size of the array should be equal to the number of stored elements
  * after the element was added the size of the array should be equal to the number of stored elements
  * null elements are not allowed to be stored in the array
- * 
+ *
  * You may add new methods, fields to this class, but DO NOT RENAME any given class, interface or method
  * DO NOT PUT any classes into packages
  *
  */
+/* class IllegalArgumentException extends Exception
+ {
+  public IllegalArgumentException()
+  {
+
+  }
+
+ }*/
+ class IllegalArgumentException extends Exception
+ {
+  public IllegalArgumentException()
+  {
+
+  }
+
+ }
 public class StudentGroup implements StudentArrayOperation {
 
 	private Student[] students;
-	
+
 	/**
 	 * DO NOT remove or change this constructor, it will be used during task check
 	 * @param length
@@ -36,40 +52,46 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
-		if (students == null) { 
+		if (students == null) {
 			throw new IllegalArgumentException();
 		}
-		else this.students = students;
+		else
+        {
+            this.students = students;
 	}
-
+	}
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		if(index < 0 || index >= students.length) throw new IllegalArgumentException();
-		else return students[index];
+		if(index < 0 || index >= students.length)
+            {
+                throw new IllegalArgumentException();
+        }
+		else {return students[index];
+	}
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
-		if(index < 0 || index >= students.length) throw new IllegalArgumentException();
+		if(index < 0 || index >= students.length){ throw new IllegalArgumentException();}
 		else {
 			students[index] = student;
 		}
 	}
-	
+
 	@Override
 	public void addFirst(Student student) {
 		// Add your implementation here
 		//Still to be Reviewed
-		if (student == null ) throw new IllegalArgumentException();
+		if (student == null ) {throw new IllegalArgumentException();}
 		else {
 			ArrayList <Student>at = new ArrayList<Student>();
 			at = (ArrayList<Student>) Arrays.asList(students);
 			at.add(0, student);
 			students = null;
 			students = (Student[]) at.toArray();
-			
+
 			/*
 			Student []st = new Student[students.length+1];
 			st[0] = student;
@@ -96,14 +118,14 @@ public class StudentGroup implements StudentArrayOperation {
 			students = null;
 			students = (Student[]) at.toArray();
 		}
-		
+
 	}
 
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		
-		
+
+
 	}
 
 	@Override
@@ -155,13 +177,13 @@ public class StudentGroup implements StudentArrayOperation {
 				count++;
 			}
 			Student []ts = new Student[count];
-			
+
 			for(int i=0;i<count;i++) {
 				ts[i] = st[i];
 			}
 			return ts;
 		}
-		
+
 	}
 
 	@Override
@@ -199,7 +221,7 @@ public class StudentGroup implements StudentArrayOperation {
 		// Add your implementation here
 		double d = 0;
 		for(int i=0;i<students.length;i++) {
-			
+
 			if(students[i].getAvgMark() > d) {
 				d = students[i].getAvgMark();
 			}
